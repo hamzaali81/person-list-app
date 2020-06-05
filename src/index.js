@@ -1,17 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const PersonList =()=>{
+return(
+  <section className="person-list">
+  <Person img="22" name="hamza" job="designer"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p></Person>
+    <Person img="75" name="ali" job="developer"/>
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  <Person img="65" name="ahmed" job="UX/UI"/>
+
+  </section>
+)
+}
+
+
+const Person=({img,job,name,children})=>{
+  const url=`https://randomuser.me/api/portraits/thumb/men/${img}.jpg`
+  return(
+    <article className="person">
+    <img src={url} alt="Person Image"/>
+    <h4>{name}</h4>
+    <p>{job}</p>
+    {children}
+   
+    </article>
+  )
+}
+
+
+
+ReactDOM.render(<PersonList></PersonList>,document.getElementById('root'));
